@@ -1,0 +1,10 @@
+<button><%= link_to "Add class", add_entity_path %></button>
+<button><%= link_to "Remove class", remove_class_path %></button>
+
+<div style="margin:20px auto">
+  <%= form_for(:entity, url: add_entity_path) do |f| %>
+    <%= f.label :entity_name, "Entity name:" %>
+    <%= f.text_field :entity_name %>
+    <%= f.submit "Add entity" %>
+  <% end %>
+</div>
