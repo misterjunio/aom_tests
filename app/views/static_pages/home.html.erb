@@ -1,10 +1,49 @@
-<button><%= link_to "Add class", add_entity_path %></button>
-<button><%= link_to "Remove class", remove_class_path %></button>
+<h1>Add entity type</h1>
+<div style="margin-bottom:50px">
+  <%= form_for(@entity_types) do |f| %>
+    <%= f.label :name, "Entity type name:" %>
+    <%= f.text_field :name %>
+    <%= f.submit "Add entity type" %>
+  <% end %>
+</div>
 
-<div style="margin:20px auto">
-  <%= form_for(:entity, url: add_entity_path) do |f| %>
-    <%= f.label :entity_name, "Entity name:" %>
-    <%= f.text_field :entity_name %>
+<h1>Add entity</h1>
+<div style="margin-bottom:50px">
+  <%= form_for(@entities) do |f| %>
+    <%= f.label :value, "Entity name:" %>
+    <%= f.text_field :value %>
+    <br>
+    <%= f.label :entity_type_id, "Entity type:" %>
+    <%= f.select :entity_type_id, EntityType.all.collect {|e| [ e.name, e.id ] } %>
     <%= f.submit "Add entity" %>
   <% end %>
 </div>
+
+<h1>Add property type</h1>
+<div style="margin-bottom:50px">
+  <%= form_for(@property_types) do |f| %>
+    <%= f.label :name, "Property type name:" %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :entity_type_id, "Entity type:" %>
+    <%= f.select :entity_type_id, EntityType.all.collect {|e| [ e.name, e.id ] } %>
+    <%= f.submit "Add property type" %>
+  <% end %>
+</div>
+
+<h1>Add property</h1>
+<div style="margin-bottom:50px">
+  <%= form_for(@properties) do |f| %>
+    <%= f.label :value, "Property value:" %>
+    <%= f.text_field :value %>
+    <br>
+    <%= f.label :entity_id, "Entity:" %>
+    <%= f.select :entity_id, Entity.all.collect {|et| [ et.value, et.id ] } %>
+    <br>
+    <%= f.label :property_type_id, "Property type:" %>
+    <%= f.select :property_type_id, PropertyType.all.collect {|p| [ p.name, p.id ] } %>
+    <%= f.submit "Add property type" %>
+  <% end %>
+</div>
+
+<%= link_to "Show", show_path %>

@@ -1,0 +1,29 @@
+<%= link_to "Home", root_path %>
+
+<h1>Entity types:</h1>
+<ul>
+  <% @entity_types.each do |entity_type| %>
+  <li><%= entity_type[:name] %></li>
+  <% end %>
+</ul>
+
+<h1>Entities:</h1>
+<ul>
+  <% @entities.each do |entity| %>
+  <li><%= entity[:value] %></li>
+  <% end %>
+</ul>
+
+<h1>Property types:</h1>
+<ul>
+  <% @property_types.each do |property_type| %>
+  <li><%= property_type[:name] %></li>
+  <% end %>
+</ul>
+
+<h1>Properties:</h1>
+<ul>
+  <% @properties.each do |property| %>
+  <li><%= property[:value] %></li>
+  <% end %>
+</ul>

@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root                        'static_pages#home'
+  root  'static_pages#home'
+  get   'show'    =>    'static_pages#show'
   
-  post    'add_entity' =>      'entities#new'
-  get     'remove_class' =>   'static_pages#home'
-  delete  'remove_class' =>   'entities#delete'
+  resources :entity_types,    only: [:create, :destroy]
+  resources :entities,        only: [:create, :destroy]
+  resources :property_types,  only: [:create, :destroy]
+  resources :properties,      only: [:create, :destroy]
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
