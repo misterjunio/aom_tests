@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20160303104956) do
 
   create_table "entities", force: :cascade do |t|
-    t.string   "type"
-    t.integer  "entity_type_id"
+    t.string   "value",          null: false
+    t.integer  "entity_type_id", null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -23,15 +23,15 @@ ActiveRecord::Schema.define(version: 20160303104956) do
   add_index "entities", ["entity_type_id"], name: "index_entities_on_entity_type_id"
 
   create_table "entity_types", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string   "value"
-    t.integer  "entity_id"
-    t.integer  "property_type_id"
+    t.string   "value",            null: false
+    t.integer  "entity_id",        null: false
+    t.integer  "property_type_id", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20160303104956) do
   add_index "properties", ["property_type_id"], name: "index_properties_on_property_type_id"
 
   create_table "property_types", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "entity_type_id"
+    t.string   "name",           null: false
+    t.integer  "entity_type_id", null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
