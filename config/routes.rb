@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :property_types,  only: [:create, :destroy]
   resources :properties,      only: [:create, :destroy]
   
+  scope '/api' do
+    get 'db'    =>    'api#show'
+  end
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
